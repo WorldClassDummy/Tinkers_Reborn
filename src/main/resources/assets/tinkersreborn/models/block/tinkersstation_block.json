@@ -1,0 +1,71 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "tinkersreborn:block/tinkersstation_side",
+    "top_texture": "tinkersreborn:block/tinkersstation_top",
+    "side_texture": "tinkersreborn:block/tinkersstation_side"
+  },
+  "elements": [
+    {
+      "name": "table_top",
+      "from": [0, 12, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "up":    { "texture": "#top_texture",  "uv": [0, 0, 16, 16] },
+        "down":  { "texture": "#side_texture", "uv": [0, 0, 16, 16] },
+        "north": { "texture": "#side_texture", "uv": [0, 0, 16, 4] },
+        "south": { "texture": "#side_texture", "uv": [0, 0, 16, 4] },
+        "west":  { "texture": "#side_texture", "uv": [0, 0, 16, 4] },
+        "east":  { "texture": "#side_texture", "uv": [0, 0, 16, 4] }
+      }
+    },
+    {
+      "name": "leg_nw",
+      "from": [0, 0, 0],
+      "to": [4, 12, 4],
+      "faces": {
+        "north": { "texture": "#side_texture", "uv": [0, 0, 4, 12] },
+        "south": { "texture": "#side_texture", "uv": [0, 0, 4, 12] },
+        "west":  { "texture": "#side_texture", "uv": [0, 0, 4, 12] },
+        "east":  { "texture": "#side_texture", "uv": [0, 0, 4, 12] },
+        "down":  { "texture": "#side_texture", "uv": [0, 0, 4, 4] }
+      }
+    },
+    {
+      "name": "leg_ne",
+      "from": [12, 0, 0],
+      "to": [16, 12, 4],
+      "faces": {
+        "north": { "texture": "#side_texture", "uv": [12, 0, 16, 12] },
+        "south": { "texture": "#side_texture", "uv": [12, 0, 16, 12] },
+        "west":  { "texture": "#side_texture", "uv": [12, 0, 16, 12] },
+        "east":  { "texture": "#side_texture", "uv": [12, 0, 16, 12] },
+        "down":  { "texture": "#side_texture", "uv": [12, 0, 16, 4] }
+      }
+    },
+    {
+      "name": "leg_sw",
+      "from": [0, 0, 12],
+      "to": [4, 12, 16],
+      "faces": {
+        "north": { "texture": "#side_texture", "uv": [0, 12, 4, 16] },
+        "south": { "texture": "#side_texture", "uv": [0, 12, 4, 16] },
+        "west":  { "texture": "#side_texture", "uv": [0, 12, 4, 16] },
+        "east":  { "texture": "#side_texture", "uv": [0, 12, 4, 16] },
+        "down":  { "texture": "#side_texture", "uv": [0, 12, 4, 16] }
+      }
+    },
+    {
+      "name": "leg_se",
+      "from": [12, 0, 12],
+      "to": [16, 12, 16],
+      "faces": {
+        "north": { "texture": "#side_texture", "uv": [12, 12, 16, 16] },
+        "south": { "texture": "#side_texture", "uv": [12, 12, 16, 16] },
+        "west":  { "texture": "#side_texture", "uv": [12, 12, 16, 16] },
+        "east":  { "texture": "#side_texture", "uv": [12, 12, 16, 16] },
+        "down":  { "texture": "#side_texture", "uv": [12, 12, 16, 16] }
+      }
+    }
+  ]
+}

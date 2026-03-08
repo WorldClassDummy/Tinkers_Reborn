@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "L": {
+      "tag": "minecraft:planks"
+    },
+    "P": {
+      "item": "tinkersreborn:pattern"
+    }
+  },
+  "pattern": [
+    " P ",
+    " L ",
+    "   "
+  ],
+  "result": {
+    "count": 1,
+    "id": "tinkersreborn:crafting_station_block"
+  }
+}

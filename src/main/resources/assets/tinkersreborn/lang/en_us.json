@@ -1,0 +1,20 @@
+{
+  "itemGroup.tinkersreborn": "Tinkers Reborn",
+  "itemGroup.tinkersrebornparts": "Tinkers Reborn Parts",
+  "block.tinkersreborn.tinkersstation_block": "Tinkers Station",
+  "block.tinkersreborn.crafting_station_block": "Crafting Station",
+  "item.tinkersreborn.tinkersstation_block": "Tinkers Station",
+  "item.tinkersreborn.crafting_station_block": "Crafting Station",
+
+
+
+  "item.tinkersreborn.pattern": "Pattern",
+  "item.tinkersreborn.stone_binding": "Stone Binding",
+  "item.tinkersreborn.stone_stick": "Stone Stick",
+  "item.tinkersreborn.stone_pickaxe_head": "Stone Pickaxe Head",
+
+
+
+
+  "tinkersreborn.configuration.title": "Tinkers Reborn Configs"
+}

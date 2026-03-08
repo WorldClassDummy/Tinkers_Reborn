@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tinkersreborn:item/stone_pickaxe_head"
+  }
+}
