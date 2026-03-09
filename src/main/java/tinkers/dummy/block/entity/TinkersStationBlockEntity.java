@@ -18,6 +18,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tinkers.dummy.block.ModBlockEntities;
 import tinkers.dummy.block.menu.TinkersStationMenu;
+import tinkers.dummy.item.ModItems;
+import tinkers.dummy.item.attribute.TinkersToolComponent;
+import tinkers.dummy.item.attribute.ToolMaterials;
+import tinkers.dummy.item.attribute.ToolParts;
+import tinkers.dummy.item.component.ModDataComponents;
+import tinkers.dummy.item.custom.BindingItem;
+import tinkers.dummy.item.custom.RodItem;
+import tinkers.dummy.item.custom.ToolHeadItem;
 
 public class TinkersStationBlockEntity extends BlockEntity implements MenuProvider {
 
@@ -63,12 +71,14 @@ public class TinkersStationBlockEntity extends BlockEntity implements MenuProvid
     private static ItemStack getResult(TinkersStationBlockEntity entity) {
         ItemStack head = entity.inventory.getStackInSlot(0);
         ItemStack binding = entity.inventory.getStackInSlot(1);
-        ItemStack stick = entity.inventory.getStackInSlot(2);
+        ItemStack rod = entity.inventory.getStackInSlot(2);
 
-        if (!head.isEmpty() &&
-                !binding.isEmpty() &&
-                !stick.isEmpty()) {
-            return new ItemStack(Items.STONE_PICKAXE);
+        if ((head.getItem() instanceof ToolHeadItem) &&
+                binding.getItem() instanceof BindingItem &&
+                rod.getItem() instanceof RodItem) {
+            ItemStack stack = new ItemStack(ModItems.PICKAXE.get());
+            stack.set(ModDataComponents.TOOL_PART_COMPONENT, new TinkersToolComponent(ToolParts.PICKAXE_HEAD, ToolMaterials.STONE));
+            return stack;
         }
 
         return ItemStack.EMPTY;

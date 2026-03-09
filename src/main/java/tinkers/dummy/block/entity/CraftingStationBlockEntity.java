@@ -9,17 +9,18 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import tinkers.dummy.TinkersReborn;
 import tinkers.dummy.block.ModBlockEntities;
 import tinkers.dummy.block.menu.CraftingStationMenu;
 import tinkers.dummy.item.ModItems;
+import tinkers.dummy.item.attribute.*;
+import tinkers.dummy.item.component.ModDataComponents;
+import tinkers.dummy.item.custom.PatternItem;
 
 public class CraftingStationBlockEntity extends BlockEntity implements MenuProvider {
 
@@ -65,8 +66,13 @@ public class CraftingStationBlockEntity extends BlockEntity implements MenuProvi
         ItemStack pattern = entity.inventory.getStackInSlot(0);
         ItemStack material = entity.inventory.getStackInSlot(1);
 
-        if (pattern.is(ModItems.PATTERN.get()) && material.is(Items.COBBLESTONE)) {
-            return new ItemStack(ModItems.STONE_PICKAXE_HEAD.get());
+        PartMaterial mat = ToolMaterials.getMaterial(material);
+
+        if (pattern.getItem() instanceof PatternItem && !material.isEmpty()) {
+
+            ItemStack stack = new ItemStack(ModItems.PICKAXE_HEAD.get());
+            stack.set(ModDataComponents.PART_MATERIAL_COMPONENT.value(), new TinkersPartComponent(mat));
+            return stack;
         }
         return ItemStack.EMPTY;
     }
