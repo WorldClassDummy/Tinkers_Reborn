@@ -3,6 +3,7 @@ package tinkers.dummy;
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -21,11 +22,16 @@ import static tinkers.dummy.block.ModBlocks.*;
 import static tinkers.dummy.item.ModItems.*;
 import static tinkers.dummy.block.ModMenuTypes.*;
 import static tinkers.dummy.block.ModBlockEntities.*;
+import static tinkers.dummy.item.component.ModDataComponents.*;
 
 @Mod(TinkersReborn.MODID)
 public class TinkersReborn {
     public static final String MODID = "tinkersreborn";
     public static final Logger LOGGER = LogUtils.getLogger();
+
+    public static ResourceLocation id(String path) {
+        return ResourceLocation.fromNamespaceAndPath(MODID, path);
+    }
 
 
     // Setup and Create the Creative Mod Tabs
@@ -46,11 +52,11 @@ public class TinkersReborn {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TINKERS_PARTS_TAB = CREATIVE_MODE_TABS.register("tinkers_parts", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.tinkersrebornparts"))
             .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(STONE_BINDING::toStack)
+            .icon(BINDING::toStack)
             .displayItems((parameters, output) -> {
-                output.accept(STONE_STICK);
-                output.accept(STONE_BINDING);
-                output.accept(STONE_PICKAXE_HEAD);
+                output.accept(ROD);
+                output.accept(BINDING);
+                output.accept(PICKAXE_HEAD);
             }).build());
 
 
@@ -63,6 +69,7 @@ public class TinkersReborn {
         CREATIVE_MODE_TABS.register(modEventBus);
         BLOCK_ENTITIES.register(modEventBus);
         MENU_TYPES.register(modEventBus);
+        DATA_COMPONENTS.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }

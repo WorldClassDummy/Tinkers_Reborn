@@ -3,6 +3,7 @@ package tinkers.dummy.item;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import tinkers.dummy.item.custom.*;
 
 import static tinkers.dummy.TinkersReborn.MODID;
 
@@ -12,15 +13,17 @@ public interface ModItems {
 
     //Create each of the part variants
     DeferredItem<Item> PATTERN = ITEMS.register("pattern",
-            () -> new Item(new Item.Properties()));
+            () -> new PatternItem(new Item.Properties()));
 
-    DeferredItem<Item> STONE_PICKAXE_HEAD = ITEMS.register("stone_pickaxe_head",
-            () -> new Item(new Item.Properties()));
+    DeferredItem<Item> PICKAXE_HEAD = ITEMS.register("pickaxe_head",
+            () -> new ToolHeadItem(new Item.Properties()));
 
-    DeferredItem<Item> STONE_STICK = ITEMS.register("stone_stick",
-            () -> new Item(new Item.Properties()));
+    DeferredItem<Item> ROD = ITEMS.register("rod",
+            () -> new RodItem(new Item.Properties()));
 
-    DeferredItem<Item> STONE_BINDING = ITEMS.register("stone_binding",
-            () -> new Item(new Item.Properties()));
+    DeferredItem<Item> BINDING = ITEMS.register("binding",
+            () -> new BindingItem(new Item.Properties()));
 
+    DeferredItem<Item> PICKAXE = ITEMS.register("pickaxe",
+            () -> new TinkersPickaxeItem(new Item.Properties()));
 }
