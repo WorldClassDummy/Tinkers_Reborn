@@ -1,4 +1,4 @@
-package tinkers.dummy.blocks.menu;
+package tinkers.dummy.block.menu;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
@@ -8,8 +8,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.SlotItemHandler;
-import tinkers.dummy.TinkersReborn;
-import tinkers.dummy.blocks.entity.TinkersStationBlockEntity;
+import tinkers.dummy.block.ModBlocks;
+import tinkers.dummy.block.ModMenuTypes;
+import tinkers.dummy.block.entity.TinkersStationBlockEntity;
 
 public class TinkersStationMenu extends AbstractContainerMenu {
     public final TinkersStationBlockEntity blockEntity;
@@ -22,11 +23,9 @@ public class TinkersStationMenu extends AbstractContainerMenu {
     }
 
     public TinkersStationMenu(int containerId, Inventory inv, BlockEntity entity) {
-        super(TinkersReborn.TINKERSSTATION_MENU.get(), containerId);
+        super(ModMenuTypes.TINKERS_STATION_MENU.get(), containerId);
         this.blockEntity = (TinkersStationBlockEntity) entity;
         this.level = inv.player.level();
-
-
 
         this.addSlot(new SlotItemHandler(blockEntity.inventory, 0, 80, 20));  // Top
         this.addSlot(new SlotItemHandler(blockEntity.inventory, 1, 53, 47));  // Left
@@ -67,7 +66,7 @@ public class TinkersStationMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), player, TinkersReborn.TINKERSSTATION_BLOCK.get());
+        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), player, ModBlocks.TINKERS_STATION_BLOCK.get());
     }
 
     private void layoutPlayerInventory(Inventory inventory) {

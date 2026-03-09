@@ -6,7 +6,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import tinkers.dummy.TinkersReborn;
-import tinkers.dummy.blocks.menu.TinkersStationMenu;
+import tinkers.dummy.block.menu.TinkersStationMenu;
 
 public class TinkersStationScreen extends AbstractContainerScreen<TinkersStationMenu> {
     private static final ResourceLocation TEXTURE =

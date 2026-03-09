@@ -1,4 +1,4 @@
-package tinkers.dummy.blocks.menu;
+package tinkers.dummy.block.menu;
 
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.items.IItemHandler;

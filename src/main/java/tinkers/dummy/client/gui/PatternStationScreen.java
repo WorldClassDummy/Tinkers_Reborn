@@ -1,4 +1,4 @@
-package tinkers.dummy.blocks.menu; // Or your screen package
+package tinkers.dummy.client.gui; // Or your screen package
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -6,6 +6,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import tinkers.dummy.TinkersReborn;
+import tinkers.dummy.block.menu.CraftingStationMenu;
 
 public class PatternStationScreen extends AbstractContainerScreen<CraftingStationMenu> {
     // Re-use your existing texture for now

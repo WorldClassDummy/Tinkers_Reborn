@@ -1,4 +1,4 @@
-package tinkers.dummy.blocks.entity;
+package tinkers.dummy.block.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -16,8 +16,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import tinkers.dummy.TinkersReborn;
-import tinkers.dummy.blocks.menu.TinkersStationMenu;
+import tinkers.dummy.block.ModBlockEntities;
+import tinkers.dummy.block.menu.TinkersStationMenu;
 
 public class TinkersStationBlockEntity extends BlockEntity implements MenuProvider {
 
@@ -31,7 +31,7 @@ public class TinkersStationBlockEntity extends BlockEntity implements MenuProvid
     private ItemStack lastSnapshot = ItemStack.EMPTY;
 
     public TinkersStationBlockEntity(BlockPos pos, BlockState state) {
-        super(TinkersReborn.TINKERSSTATION_BE.get(), pos, state);
+        super(ModBlockEntities.TINKERS_STATION_BE.get(), pos, state);
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, TinkersStationBlockEntity pEntity) {
@@ -65,9 +65,9 @@ public class TinkersStationBlockEntity extends BlockEntity implements MenuProvid
         ItemStack binding = entity.inventory.getStackInSlot(1);
         ItemStack stick = entity.inventory.getStackInSlot(2);
 
-        if (head.is(TinkersReborn.STONE_PICKAXE_HEAD.get()) &&
-                binding.is(TinkersReborn.STONE_BINDING.get()) &&
-                stick.is(TinkersReborn.STONE_STICK.get())) {
+        if (!head.isEmpty() &&
+                !binding.isEmpty() &&
+                !stick.isEmpty()) {
             return new ItemStack(Items.STONE_PICKAXE);
         }
 

@@ -1,4 +1,4 @@
-package tinkers.dummy.blocks.entity;
+package tinkers.dummy.block.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -17,8 +17,9 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tinkers.dummy.TinkersReborn;
-import tinkers.dummy.blocks.menu.CraftingStationMenu;
-import tinkers.dummy.items.Patterns;
+import tinkers.dummy.block.ModBlockEntities;
+import tinkers.dummy.block.menu.CraftingStationMenu;
+import tinkers.dummy.item.ModItems;
 
 public class CraftingStationBlockEntity extends BlockEntity implements MenuProvider {
 
@@ -32,7 +33,7 @@ public class CraftingStationBlockEntity extends BlockEntity implements MenuProvi
     private ItemStack lastSnapshot = ItemStack.EMPTY;
 
     public CraftingStationBlockEntity(BlockPos pos, BlockState state) {
-        super(TinkersReborn.CRAFTING_STATION_BE.get(), pos, state);
+        super(ModBlockEntities.CRAFTING_STATION_BE.get(), pos, state);
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, CraftingStationBlockEntity pEntity) {
@@ -64,8 +65,8 @@ public class CraftingStationBlockEntity extends BlockEntity implements MenuProvi
         ItemStack pattern = entity.inventory.getStackInSlot(0);
         ItemStack material = entity.inventory.getStackInSlot(1);
 
-        if (pattern.is(TinkersReborn.PATTERN.get()) && material.is(Items.COBBLESTONE)) {
-            return new ItemStack(TinkersReborn.STONE_PICKAXE_HEAD.get());
+        if (pattern.is(ModItems.PATTERN.get()) && material.is(Items.COBBLESTONE)) {
+            return new ItemStack(ModItems.STONE_PICKAXE_HEAD.get());
         }
         return ItemStack.EMPTY;
     }

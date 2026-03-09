@@ -1,9 +1,9 @@
 {
   "parent": "minecraft:block/block",
   "textures": {
-    "particle": "tinkersreborn:block/tinkersstation_side",
+    "particle": "tinkersreborn:block/tinkers_station_side",
     "top_texture": "tinkersreborn:block/crafting_station_top",
-    "side_texture": "tinkersreborn:block/tinkersstation_side"
+    "side_texture": "tinkersreborn:block/tinkers_station_side"
   },
   "elements": [
     {
