@@ -66,12 +66,12 @@ public class CraftingStationBlockEntity extends BlockEntity implements MenuProvi
         ItemStack pattern = entity.inventory.getStackInSlot(0);
         ItemStack material = entity.inventory.getStackInSlot(1);
 
-        PartMaterial mat = ToolMaterials.getMaterial(material);
+        PartMaterial mat = ToolMaterials.getIngredientMaterial(material);
 
         if (pattern.getItem() instanceof PatternItem && !material.isEmpty()) {
 
-            ItemStack stack = new ItemStack(ModItems.PICKAXE_HEAD.get());
-            stack.set(ModDataComponents.PART_MATERIAL_COMPONENT.value(), new TinkersPartComponent(mat));
+            ItemStack stack = new ItemStack(ModItems.ROD.get());
+            stack.set(ModDataComponents.PART_MATERIAL_COMPONENT.value(), new TinkersMaterialComponent(mat));
             return stack;
         }
         return ItemStack.EMPTY;

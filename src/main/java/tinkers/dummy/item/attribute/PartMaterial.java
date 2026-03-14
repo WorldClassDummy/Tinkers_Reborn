@@ -12,8 +12,6 @@ import java.util.Map;
 public class PartMaterial {
     public static final Map<ResourceLocation, PartMaterial> ID = new HashMap<>();
 
-
-
     public static PartMaterial register(String name) {
         ResourceLocation id = TinkersReborn.id(name);
         PartMaterial material = new PartMaterial(id);

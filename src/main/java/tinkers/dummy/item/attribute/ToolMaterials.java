@@ -17,13 +17,13 @@ public class ToolMaterials extends PartMaterial {
     public static final PartMaterial DIAMOND = register("diamond");
     public static final PartMaterial NETHERITE = register("netherite");
 
-    public static PartMaterial getMaterial(ItemStack stack) {
+    public static PartMaterial getIngredientMaterial(ItemStack stack) {
         if (stack.is(ItemTags.PLANKS)) return WOOD;
         if (stack.is(ItemTags.STONE_TOOL_MATERIALS)) return STONE;
         if (stack.is(ModItemTags.IRON_TOOL_MATERIALS)) return IRON;
         if (stack.is(ModItemTags.GOLD_TOOL_MATERIALS)) return GOLD;
         if (stack.is(ModItemTags.DIAMOND_TOOL_MATERIALS)) return DIAMOND;
         if (stack.is(ModItemTags.NETHERITE_TOOL_MATERIALS)) return NETHERITE;
-        else return null;
+        else return STONE;
     }
 }

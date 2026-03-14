@@ -17,6 +17,9 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
+import tinkers.dummy.item.attribute.PartMaterial;
+import tinkers.dummy.item.attribute.TinkersMaterialComponent;
+import tinkers.dummy.item.component.ModDataComponents;
 
 import static tinkers.dummy.block.ModBlocks.*;
 import static tinkers.dummy.item.ModItems.*;
@@ -54,16 +57,23 @@ public class TinkersReborn {
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .icon(BINDING::toStack)
             .displayItems((parameters, output) -> {
-                output.accept(ROD);
-                output.accept(BINDING);
-                output.accept(PICKAXE_HEAD);
+                for (PartMaterial material : PartMaterial.ID.values()) {
+                    ItemStack rod = ROD.toStack();
+                    ItemStack binding = BINDING.toStack();
+                    ItemStack pickaxeHead = PICKAXE_HEAD.toStack();
+                    rod.set(PART_MATERIAL_COMPONENT, new TinkersMaterialComponent(material));
+                    binding.set(PART_MATERIAL_COMPONENT, new TinkersMaterialComponent(material));
+                    pickaxeHead.set(PART_MATERIAL_COMPONENT, new TinkersMaterialComponent(material));
+                    output.accept(rod);
+                    output.accept(binding);
+                    output.accept(pickaxeHead);
+                }
             }).build());
 
 
 
 
     public TinkersReborn(IEventBus modEventBus, ModContainer modContainer) {
-        // Register everything to the Mod Event Bus
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
         CREATIVE_MODE_TABS.register(modEventBus);
@@ -71,12 +81,15 @@ public class TinkersReborn {
         MENU_TYPES.register(modEventBus);
         DATA_COMPONENTS.register(modEventBus);
 
+        modEventBus.addListener(this::addCreative);
+
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     @SubscribeEvent
-    static void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+    public void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+            event.accept(CRAFTING_STATION_BLOCK);
             event.accept(TINKERS_STATION_BLOCK);
         }
     }

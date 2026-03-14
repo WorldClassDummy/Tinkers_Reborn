@@ -11,6 +11,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 import tinkers.dummy.TinkersReborn;
 import tinkers.dummy.item.ModItems;
+import tinkers.dummy.tag.ModItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -38,6 +39,19 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         tag(ItemTags.HOES)
                 .replace(false)
+        ;
+
+        tag(ModItemTags.IRON_TOOL_MATERIALS)
+                .add(Items.IRON_INGOT)
+        ;
+        tag(ModItemTags.GOLD_TOOL_MATERIALS)
+                .add(Items.GOLD_INGOT)
+        ;
+        tag(ModItemTags.DIAMOND_TOOL_MATERIALS)
+                .add(Items.DIAMOND)
+        ;
+        tag(ModItemTags.NETHERITE_TOOL_MATERIALS)
+                .add(Items.NETHERITE_INGOT)
         ;
     }
 }

@@ -9,7 +9,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,9 +18,7 @@ import org.jetbrains.annotations.Nullable;
 import tinkers.dummy.block.ModBlockEntities;
 import tinkers.dummy.block.menu.TinkersStationMenu;
 import tinkers.dummy.item.ModItems;
-import tinkers.dummy.item.attribute.TinkersToolComponent;
-import tinkers.dummy.item.attribute.ToolMaterials;
-import tinkers.dummy.item.attribute.ToolParts;
+import tinkers.dummy.item.attribute.*;
 import tinkers.dummy.item.component.ModDataComponents;
 import tinkers.dummy.item.custom.BindingItem;
 import tinkers.dummy.item.custom.RodItem;
@@ -42,42 +39,49 @@ public class TinkersStationBlockEntity extends BlockEntity implements MenuProvid
         super(ModBlockEntities.TINKERS_STATION_BE.get(), pos, state);
     }
 
-    public static void tick(Level level, BlockPos pos, BlockState state, TinkersStationBlockEntity pEntity) {
+    public static void tick(Level level, BlockPos pos, BlockState state, TinkersStationBlockEntity entity) {
         if (level.isClientSide) return;
 
-        ItemStack currentOutput = pEntity.inventory.getStackInSlot(6);
-        ItemStack result = getResult(pEntity);
+        ItemStack currentOutput = entity.inventory.getStackInSlot(6);
+        ItemStack result = getResult(entity);
 
-        if (currentOutput.isEmpty() && !pEntity.lastSnapshot.isEmpty()) {
-            pEntity.inventory.extractItem(0, 1, false);
-            pEntity.inventory.extractItem(1, 1, false);
-            pEntity.inventory.extractItem(2, 1, false);
-            pEntity.setChanged();
+        if (currentOutput.isEmpty() && !entity.lastSnapshot.isEmpty()) {
+            entity.inventory.extractItem(0, 1, false);
+            entity.inventory.extractItem(1, 1, false);
+            entity.inventory.extractItem(2, 1, false);
+            entity.setChanged();
         }
 
         if (!result.isEmpty()) {
-            if (pEntity.inventory.getStackInSlot(6).isEmpty()) {
-                pEntity.inventory.setStackInSlot(6, result);
+            if (currentOutput.isEmpty()) {
+                entity.inventory.setStackInSlot(6, result);
             }
         } else {
-            if (!pEntity.inventory.getStackInSlot(6).isEmpty()) {
-                pEntity.inventory.setStackInSlot(6, ItemStack.EMPTY);
+            if (!currentOutput.isEmpty()) {
+                entity.inventory.setStackInSlot(6, ItemStack.EMPTY);
             }
         }
 
-        pEntity.lastSnapshot = pEntity.inventory.getStackInSlot(6).copy();
+        entity.lastSnapshot = entity.inventory.getStackInSlot(6).copy();
     }
 
     private static ItemStack getResult(TinkersStationBlockEntity entity) {
         ItemStack head = entity.inventory.getStackInSlot(0);
-        ItemStack binding = entity.inventory.getStackInSlot(1);
-        ItemStack rod = entity.inventory.getStackInSlot(2);
+        ItemStack rod = entity.inventory.getStackInSlot(1);
+        ItemStack binding = entity.inventory.getStackInSlot(2);
+
+        PartMaterial headMaterial = ToolMaterials.getIngredientMaterial(head);
+        PartMaterial rodMaterial = ToolMaterials.getIngredientMaterial(rod);
+        PartMaterial bindingMaterial = ToolMaterials.getIngredientMaterial(binding);
+
 
         if ((head.getItem() instanceof ToolHeadItem) &&
                 binding.getItem() instanceof BindingItem &&
                 rod.getItem() instanceof RodItem) {
             ItemStack stack = new ItemStack(ModItems.PICKAXE.get());
-            stack.set(ModDataComponents.TOOL_PART_COMPONENT, new TinkersToolComponent(ToolParts.PICKAXE_HEAD, ToolMaterials.STONE));
+            stack.set(ModDataComponents.HEAD_PART_COMPONENT.value(), new TinkersHeadComponent(ToolParts.PICKAXE_HEAD, headMaterial));
+            stack.set(ModDataComponents.BINDING_PART_COMPONENT.value(), new TinkersBindingComponent(ToolParts.BINDING, bindingMaterial));
+            stack.set(ModDataComponents.ROD_PART_COMPONENT.value(), new TinkersRodComponent(ToolParts.ROD, rodMaterial));
             return stack;
         }
 
@@ -86,7 +90,7 @@ public class TinkersStationBlockEntity extends BlockEntity implements MenuProvid
 
     @Override
     public Component getDisplayName() {
-        return Component.translatable("block.tinkersreborn.tinkersstation_block");
+        return Component.translatable("block.tinkersreborn.tinkers_station_block");
     }
 
     @Nullable

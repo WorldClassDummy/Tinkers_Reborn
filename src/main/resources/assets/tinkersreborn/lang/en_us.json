@@ -4,10 +4,25 @@
   "block.tinkersreborn.tinkers_station_block": "Tinkers Station",
   "block.tinkersreborn.crafting_station_block": "Crafting Station",
 
+  "tooltip.tinkersreborn.material.wood": "Wood",
+  "tooltip.tinkersreborn.material.stone": "Stone",
+  "tooltip.tinkersreborn.material.iron": "Iron",
+  "tooltip.tinkersreborn.material.gold": "Gold",
+  "tooltip.tinkersreborn.material.diamond": "Diamond",
+  "tooltip.tinkersreborn.material.netherite": "Netherite",
+
+  "tooltip.tinkersreborn.part.pickaxe_head": "Pickaxe Head",
+  "tooltip.tinkersreborn.part.binding": "Binding",
+  "tooltip.tinkersreborn.part.rod": "Rod",
+  "tooltip.tinkersreborn.part.gold": "Gold",
+  "tooltip.tinkersreborn.part.diamond": "Diamond",
+  "tooltip.tinkersreborn.part.netherite": "Netherite",
+
   "item.tinkersreborn.pattern": "Pattern",
-  "item.tinkersreborn.stone_binding": "Stone Binding",
-  "item.tinkersreborn.stone_stick": "Stone Stick",
-  "item.tinkersreborn.stone_pickaxe_head": "Stone Pickaxe Head",
+  "item.tinkersreborn.binding": "Binding",
+  "item.tinkersreborn.rod": "Rod",
+  "item.tinkersreborn.pickaxe_head": "Pickaxe Head",
+  "item.tinkersreborn.pickaxe": "Pickaxe",
 
   "tinkersreborn.configuration.title": "Tinkers Reborn Configs"
 }
