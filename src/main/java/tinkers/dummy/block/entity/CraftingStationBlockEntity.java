@@ -70,7 +70,7 @@ public class CraftingStationBlockEntity extends BlockEntity implements MenuProvi
 
         if (pattern.getItem() instanceof PatternItem && !material.isEmpty()) {
 
-            ItemStack stack = new ItemStack(ModItems.ROD.get());
+            ItemStack stack = new ItemStack(ModItems.PICKAXE_HEAD.get());
             stack.set(ModDataComponents.PART_MATERIAL_COMPONENT.value(), new TinkersMaterialComponent(mat));
             return stack;
         }

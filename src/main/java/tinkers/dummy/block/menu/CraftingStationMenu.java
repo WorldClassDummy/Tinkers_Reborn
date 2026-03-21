@@ -36,15 +36,15 @@ public class CraftingStationMenu extends AbstractContainerMenu {
         this.level = inv.player.level();
 
         // --- SLOTS (Re-using your perfect coordinates) ---
-        this.addSlot(new SlotItemHandler(blockEntity.inventory, 0, 47, 12));  // Pattern
-        this.addSlot(new SlotItemHandler(blockEntity.inventory, 1, 28, 31));  // Material
-        this.addSlot(new SlotItemHandler(blockEntity.inventory, 2, 47, 31));
-        this.addSlot(new SlotItemHandler(blockEntity.inventory, 3, 66, 31));
-        this.addSlot(new SlotItemHandler(blockEntity.inventory, 4, 28, 50));
-        this.addSlot(new SlotItemHandler(blockEntity.inventory, 5, 66, 50));
+        this.addSlot(new SlotItemHandler(blockEntity.inventory, 0, 41, 7));  // Pattern
+        this.addSlot(new SlotItemHandler(blockEntity.inventory, 1, 15, 25));  // Material
+        this.addSlot(new SlotItemHandler(blockEntity.inventory, 2, 41, 33));
+        this.addSlot(new SlotItemHandler(blockEntity.inventory, 3, 68, 24));
+        this.addSlot(new SlotItemHandler(blockEntity.inventory, 4, 23, 57));
+        this.addSlot(new SlotItemHandler(blockEntity.inventory, 5, 59, 57));
 
         // Output Slot (Using our custom Result Slot to prevent putting items in)
-        this.addSlot(new ModResultSlot(blockEntity.inventory, 6, 127, 31));
+        this.addSlot(new ModResultSlot(blockEntity.inventory, 6, 127, 32));
 
         layoutPlayerInventory(inv);
     }

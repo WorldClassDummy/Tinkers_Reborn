@@ -27,15 +27,15 @@ public class TinkersStationMenu extends AbstractContainerMenu {
         this.blockEntity = (TinkersStationBlockEntity) entity;
         this.level = inv.player.level();
 
-        this.addSlot(new SlotItemHandler(blockEntity.inventory, 0, 80, 20));  // Top
-        this.addSlot(new SlotItemHandler(blockEntity.inventory, 1, 53, 47));  // Left
-        this.addSlot(new SlotItemHandler(blockEntity.inventory, 2, 80, 47));  // Center
-        this.addSlot(new SlotItemHandler(blockEntity.inventory, 3, 107, 47));  // Right
-        this.addSlot(new SlotItemHandler(blockEntity.inventory, 4, 62, 74));  // Bottom Left
-        this.addSlot(new SlotItemHandler(blockEntity.inventory, 5, 98, 74));  // Bottom Right
+        this.addSlot(new SlotItemHandler(blockEntity.inventory, 0, 41, 7));  // Top
+        this.addSlot(new SlotItemHandler(blockEntity.inventory, 1, 15, 25));  // Left
+        this.addSlot(new SlotItemHandler(blockEntity.inventory, 2, 41, 33));  // Center
+        this.addSlot(new SlotItemHandler(blockEntity.inventory, 3, 68, 24));  // Right
+        this.addSlot(new SlotItemHandler(blockEntity.inventory, 4, 23, 57));  // Bottom Left
+        this.addSlot(new SlotItemHandler(blockEntity.inventory, 5, 59, 57));  // Bottom Right
 
         // Output Slot (Moved up from 35 -> 31)
-        this.addSlot(new ModResultSlot(blockEntity.inventory, 6, 145, 47));
+        this.addSlot(new ModResultSlot(blockEntity.inventory, 6, 127, 32));
 
         layoutPlayerInventory(inv);
     }
