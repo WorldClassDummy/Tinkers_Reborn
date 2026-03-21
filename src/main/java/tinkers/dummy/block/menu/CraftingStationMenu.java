@@ -7,6 +7,8 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 import tinkers.dummy.TinkersReborn;
 import tinkers.dummy.block.ModBlocks;
@@ -34,17 +36,18 @@ public class CraftingStationMenu extends AbstractContainerMenu {
         }
 
         this.level = inv.player.level();
+        IItemHandler dataInventory = stationEntity.inventory;
 
         // --- SLOTS (Re-using your perfect coordinates) ---
-        this.addSlot(new SlotItemHandler(blockEntity.inventory, 0, 41, 7));  // Pattern
-        this.addSlot(new SlotItemHandler(blockEntity.inventory, 1, 15, 25));  // Material
-        this.addSlot(new SlotItemHandler(blockEntity.inventory, 2, 41, 33));
-        this.addSlot(new SlotItemHandler(blockEntity.inventory, 3, 68, 24));
-        this.addSlot(new SlotItemHandler(blockEntity.inventory, 4, 23, 57));
-        this.addSlot(new SlotItemHandler(blockEntity.inventory, 5, 59, 57));
+        this.addSlot(new SlotItemHandler(dataInventory, 0, 41, 7));  // Pattern
+        this.addSlot(new SlotItemHandler(dataInventory, 1, 15, 25));  // Material
+        this.addSlot(new SlotItemHandler(dataInventory, 2, 41, 33));
+        this.addSlot(new SlotItemHandler(dataInventory, 3, 68, 24));
+        this.addSlot(new SlotItemHandler(dataInventory, 4, 23, 57));
+        this.addSlot(new SlotItemHandler(dataInventory, 5, 59, 57));
 
         // Output Slot (Using our custom Result Slot to prevent putting items in)
-        this.addSlot(new ModResultSlot(blockEntity.inventory, 6, 127, 32));
+        this.addSlot(new ModResultSlot(dataInventory, 6, 127, 32));
 
         layoutPlayerInventory(inv);
     }
