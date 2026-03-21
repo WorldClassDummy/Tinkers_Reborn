@@ -12,21 +12,27 @@ import java.util.Map;
 public class Pattern {
     public static final Map<ResourceLocation, Pattern> ID = new HashMap<>();
 
-    public static Pattern register(String name) {
+    public static Pattern register(String name, int materialAmount) {
         ResourceLocation id = TinkersReborn.id(name);
-        Pattern pattern = new Pattern(id);
+        Pattern pattern = new Pattern(id, materialAmount);
         ID.put(id, pattern);
         return pattern;
     }
 
     private final ResourceLocation id;
+    private final int materialAmount;
 
-    public Pattern(ResourceLocation id) {
+    public Pattern(ResourceLocation id, int materialAmount) {
         this.id = id;
+        this.materialAmount = materialAmount;
     }
 
     public ResourceLocation getId() {
         return this.id;
+    }
+
+    public int getMaterialRequirement() {
+        return this.materialAmount;
     }
 
     public Pattern getMaterial(ResourceLocation id) {
